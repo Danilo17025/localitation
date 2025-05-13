@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Obtener ubicación</title>
+</head>
+
+<body>
+    <button id="geoBtn">¿Dónde estoy?</button>
+    <p id="output"></p>
+
+    <script>
+        const btn = document.getElementById('geoBtn');
+        const output = document.getElementById('output');
+
+        btn.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                output.textContent = 'Tu navegador no soporta Geolocation.';
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const { latitude, longitude, accuracy } = pos.coords;
+                    // URL de Google Maps con las coordenadas
+                    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+
+                    // Mostrar datos y enlace
+                    output.innerHTML =
+                        `Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)} ` +
+                        `(±${accuracy} metros)<br>` +
+                        `<a href="${mapsUrl}" target="_blank">Ver en Google Maps</a>`;
+                },
+                (err) => {
+                    switch (err.code) {
+                        case err.PERMISSION_DENIED:
+                            output.textContent = 'Permiso denegado.';
+                            break;
+                        case err.POSITION_UNAVAILABLE:
+                            output.textContent = 'Posición no disponible.';
+                            break;
+                        case err.TIMEOUT:
+                            output.textContent = 'Tiempo de espera agotado.';
+                            break;
+                        default:
+                            output.textContent = 'Error desconocido.';
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>
