@@ -2,7 +2,7 @@
 const CLIENT_ID = '983205639998-f3u9akdta6s0iek8h1nglgbajqvdjrev.apps.googleusercontent.com';
 const API_KEY = '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';
 const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
-const SPREADSHEET_ID = 'Ubicaciones';
+const SPREADSHEET_ID = 'AKfycbxvrX1V_TNnxRw7duNekdNnsUpbd4dDWAVPmFlMZuWwmjMQYvzVPdAWkmwoi5xvUktSgg';
 const RANGE = 'Sheet1!A1:D1';  // Aquí defines el rango donde deseas insertar los datos
 
 let gapiInited = false;
