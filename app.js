@@ -1,0 +1,20 @@
+< !DOCTYPE html >
+    <html lang="es">
+
+        <head>
+            <meta charset="UTF-8">
+                <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://apis.google.com;">
+                    <title>Geolocalización a Google Sheets</title>
+                    <!-- Cargar API de Google -->
+                    <script src="https://apis.google.com/js/api.js"></script>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                </head>
+
+                <body>
+                    <p id="output">Cargando ubicación...</p>
+
+                    <!-- Enlazar el archivo JS externo -->
+                    <script src="app.js"></script>
+                </body>
+
+            </html>
